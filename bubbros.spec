@@ -113,20 +113,6 @@ install -p -m 644 %{name}.png \
 %clean
 rm -rf %{buildroot}
 
-
-%post
-touch --no-create %{_datadir}/icons/hicolor || :
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-
-%postun
-touch --no-create %{_datadir}/icons/hicolor || :
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-
-
 %files
 %defattr(-,root,root,-)
 %doc LICENSE.txt artistic.txt levels.txt
@@ -135,6 +121,6 @@ fi
 %{_datadir}/%{name}
 %{_datadir}/applications/dribble-%{name}.desktop
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-%{_mandir}/man6/bubbros*.6.lzma
+%{_mandir}/man6/bubbros*.6.*
 
 
