@@ -1,10 +1,6 @@
-%define name    bubbros
-%define version 1.6
-%define release %mkrel 1
-
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}      
+Name:           bubbros
+Version:        1.6
+Release:        2
 Summary:        Bub and Brothers game inspired by the classic Bubble and Bobble
 Group:          Games/Arcade
 License:        MIT and Artistic 2.0
@@ -18,16 +14,11 @@ Source3:        bubbros-server.sh
 Source4:        bubbros.sh
 Source5:        bubbros-license-Artistic2.0.txt
 Patch0:         bubbros-1.5-fixes.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:  python-devel ImageMagick desktop-file-utils  
+BuildRequires:  python-devel imagemagick desktop-file-utils  
 BuildRequires:  java-sdk
 BuildRequires:  x11-proto-devel
-BuildRequires:  libx11-devel
-%ifarch x86_64
-BuildRequires:  lib64xext6-devel
-%else 
-BuildRequires:  libxext6-devel
-%endif
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 Requires:       pygame pygtk2 hicolor-icon-theme
 # htmlview
 
@@ -124,3 +115,35 @@ rm -rf %{buildroot}
 %{_mandir}/man6/bubbros*.6.*
 
 
+
+
+%changelog
+* Sat Nov 06 2010 Funda Wang <fwang@mandriva.org> 1.6-1mdv2011.0
++ Revision: 594207
+- update fil elist
+
+* Tue Sep 29 2009 Glen Ogilvie <nelg@mandriva.org> 1.6-1mdv2010.0
++ Revision: 450814
+- New game, under MIT and Artistic 2.0 license
+
+
+* Wed Jun 10 2009 Glen Ogilvie <nelg@mandriva.org> 1.6-1mdv2010.0
+- Reworked spec file for inclusion in Mandriva.
+
+* Thu Jul 24 2008 Hans de Goede <j.w.r.degoede@hhs.nl> 1.6-2
+- Release bump for rpmfusion
+
+* Mon Sep 10 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.6-1
+- New upstream release 1.6
+
+* Mon Jan 15 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-3
+- Rebuild (with compile and run fixes) for new python2.5
+
+* Tue Aug  1 2006 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-2
+- Add missing BuildRequires: libX11-devel libXext-devel xorg-x11-proto-devel
+- Add Requires: htmlview
+- Recompile java code instead of using precompiled .class files
+- Don't install java source code, only class files
+
+* Fri Jul 28 2006 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-1
+- initial Dribble package
