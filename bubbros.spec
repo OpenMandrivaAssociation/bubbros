@@ -14,7 +14,9 @@ Source3:        bubbros-server.sh
 Source4:        bubbros.sh
 Source5:        bubbros-license-Artistic2.0.txt
 Patch0:         bubbros-1.5-fixes.patch
-BuildRequires:  python-devel imagemagick desktop-file-utils  
+BuildRequires:  python2-devel 
+BuildRequires:  imagemagick 
+BuildRequires:  desktop-file-utils  
 BuildRequires:  java-sdk
 BuildRequires:  x11-proto-devel
 BuildRequires:  pkgconfig(x11)
@@ -48,7 +50,10 @@ mv bubbob/levels/README.txt levels.txt
 install -m 644 %{SOURCE5} artistic.txt
 
 %build
-make %{?_smp_mflags}
+ln -s %{_bindir}/python2 python
+export PATH=`pwd`:$PATH
+
+%make
 pushd bubbob/images
 python buildcolors.py
 popd
@@ -61,7 +66,6 @@ convert bubbob/images/dragon_0.ppm -transparent '#010101' -crop 32x32+0+0 \
 
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/%{name}
 mkdir -p %{buildroot}%{_libdir}/%{name}
@@ -116,34 +120,3 @@ rm -rf %{buildroot}
 
 
 
-
-%changelog
-* Sat Nov 06 2010 Funda Wang <fwang@mandriva.org> 1.6-1mdv2011.0
-+ Revision: 594207
-- update fil elist
-
-* Tue Sep 29 2009 Glen Ogilvie <nelg@mandriva.org> 1.6-1mdv2010.0
-+ Revision: 450814
-- New game, under MIT and Artistic 2.0 license
-
-
-* Wed Jun 10 2009 Glen Ogilvie <nelg@mandriva.org> 1.6-1mdv2010.0
-- Reworked spec file for inclusion in Mandriva.
-
-* Thu Jul 24 2008 Hans de Goede <j.w.r.degoede@hhs.nl> 1.6-2
-- Release bump for rpmfusion
-
-* Mon Sep 10 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.6-1
-- New upstream release 1.6
-
-* Mon Jan 15 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-3
-- Rebuild (with compile and run fixes) for new python2.5
-
-* Tue Aug  1 2006 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-2
-- Add missing BuildRequires: libX11-devel libXext-devel xorg-x11-proto-devel
-- Add Requires: htmlview
-- Recompile java code instead of using precompiled .class files
-- Don't install java source code, only class files
-
-* Fri Jul 28 2006 Hans de Goede <j.w.r.degoede@hhs.nl> 1.5-1
-- initial Dribble package
