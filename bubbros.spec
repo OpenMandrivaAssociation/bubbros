@@ -21,6 +21,7 @@ BuildRequires:  java-sdk
 BuildRequires:  x11-proto-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:	gcc-c++, gcc, gcc-cpp
 Requires:       pygame pygtk2 hicolor-icon-theme
 # htmlview
 
@@ -50,6 +51,8 @@ mv bubbob/levels/README.txt levels.txt
 install -m 644 %{SOURCE5} artistic.txt
 
 %build
+export CC=gcc
+export CXX=g++
 ln -s %{_bindir}/python2 python
 export PATH=`pwd`:$PATH
 
