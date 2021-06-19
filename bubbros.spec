@@ -13,7 +13,7 @@ Source2:        bubbros-client.sh
 Source3:        bubbros-server.sh
 Source4:        bubbros.sh
 Source5:        bubbros-license-Artistic2.0.txt
-Patch0:         bubbros-1.5-fixes.patch
+#Patch0:         bubbros-1.5-fixes.patch
 BuildRequires:  python2-devel 
 BuildRequires:  imagemagick 
 BuildRequires:  desktop-file-utils  
@@ -42,7 +42,7 @@ Features:
 %prep
 %setup -q
 #no backups for this patch, otherwise they end up getting installed!
-%patch0 -p1
+#patch0 -p1
 sed -i 's:#! /usr/bin/env python:#!%{__python}:' BubBob.py bubbob/bb.py \
   display/Client.py
 chmod +x display/Client.py
