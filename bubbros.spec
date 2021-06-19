@@ -1,6 +1,6 @@
 Name:           bubbros
-Version:        1.6
-Release:        3
+Version:        1.6.2
+Release:        1
 Summary:        Bub and Brothers game inspired by the classic Bubble and Bobble
 Group:          Games/Arcade
 License:        MIT and Artistic 2.0
