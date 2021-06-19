@@ -7,7 +7,7 @@ License:        MIT and Artistic 2.0
 #               Code under MIT
 #               Sound and Graphics under Artistic 2.0, as released by Sebastian Wegner, in an email on 28/09/2009.
 URL:            http://bub-n-bros.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/bub-n-bros/%{name}-%{version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/bub-n-bros/%{name}-%{version}.tar.gz
 Source1:        bubbros.desktop
 Source2:        bubbros-client.sh
 Source3:        bubbros-server.sh
