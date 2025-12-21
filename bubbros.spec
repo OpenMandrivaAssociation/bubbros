@@ -14,6 +14,7 @@ Source3:		bubbros-server.sh
 Source4:		bubbros.sh
 Source5:		bubbros-license-Artistic2.0.txt
 Patch0:			bubbros-1.5-fixes.patch
+BuildRequires:	make
 BuildRequires:	python2-devel
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
